@@ -207,18 +207,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
   <div class="tabs" id="tabs"></div>
   <div class="scroll" id="scroll"></div>
   <nav class="bot-nav">
-    <button class="nav-btn on" id="nb-overview" onclick="goNav('overview')">
+    <button class="nav-btn on" id="nb-overview" data-nav="overview">
       <span class="nav-ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="12" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="2" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="12" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/></svg></span>
       <span class="nav-lbl">Overview</span>
     </button>
-    <button class="nav-btn" id="nb-checklist" onclick="goNav('checklist')">
+    <button class="nav-btn" id="nb-checklist" data-nav="checklist">
       <span class="nav-ic">
         <div class="pip" id="pip"></div>
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 6h14M4 11h14M4 16h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="18" cy="16" r="3.2" stroke="currentColor" stroke-width="1.7"/><path d="M16.8 16l.9 1 1.8-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
       </span>
       <span class="nav-lbl">Check-list</span>
     </button>
-    <button class="nav-btn" id="nb-info" onclick="goNav('info')">
+    <button class="nav-btn" id="nb-info" data-nav="info">
       <span class="nav-ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M11 10v5M11 7.5v.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
       <span class="nav-lbl">Match Info</span>
     </button>
@@ -658,27 +658,37 @@ function exportPDF(){
   var all=allItems(), done=all.filter(function(i){ return state[i.id]&&state[i.id].c; }).length;
   var pct=all.length?Math.round(done/all.length*100):0;
   var date=new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});
-  var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;font-size:12px;color:#111;padding:20px 28px;}'
-    +'h1{font-size:20px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#003087;margin-bottom:2px;}'
-    +'.sub{font-size:9px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;border-bottom:2px solid #F5C518;padding-bottom:8px;}'
-    +'.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;background:#f2f5f9;border-radius:8px;padding:12px 16px;margin-bottom:12px;border-left:4px solid #003087;}'
-    +'.info-row label{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:#888;font-weight:700;display:block;margin-bottom:2px;}'
-    +'.info-row span{font-size:13px;font-weight:700;color:#003087;}'
-    +'.pbar{height:8px;background:#dde3ec;border-radius:99px;overflow:hidden;margin-bottom:4px;}'
-    +'.pfill{height:100%;background:linear-gradient(90deg,#003087,#1a56c4);border-radius:99px;width:'+pct+'%;}'
-    +'.plbl{font-size:10px;color:#888;margin-bottom:14px;}'
-    +'.ph{font-size:12px;font-weight:900;text-transform:uppercase;color:#fff;background:#003087;padding:7px 12px;margin:14px 0 4px;border-radius:6px;}'
-    +'.cat{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#003087;padding:8px 0 3px;border-bottom:1px solid #F5C518;margin-bottom:3px;}'
-    +'.row{display:flex;align-items:flex-start;padding:5px 4px;border-bottom:1px solid #eee;gap:10px;}.row:last-child{border-bottom:none;}'
-    +'.chk{width:16px;height:16px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;}'
-    +'.chk.ok{background:#1DB86B;border-color:#1DB86B;color:#fff;}'
-    +'.lbl{flex:1;font-size:11px;color:#111;line-height:1.4;}.lbl.done{color:#5a7a6a;text-decoration:line-through;}'
-    +'.cmt{margin:3px 0 4px 26px;background:#fffbea;border-left:3px solid #F5C518;padding:5px 8px;font-size:10px;color:#555;border-radius:0 4px 4px 0;font-style:italic;}'
-    +'.sig-sec{margin-top:24px;padding-top:14px;border-top:3px solid #003087;display:flex;justify-content:space-between;align-items:flex-end;}'
-    +'.sig-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:#888;font-weight:700;margin-bottom:4px;}'
-    +'.sig-name{font-size:16px;font-style:italic;font-weight:700;color:#003087;border-bottom:1px solid #ccc;padding-bottom:4px;min-width:180px;}'
-    +'.sig-date{font-size:10px;color:#555;margin-top:4px;}.re-brand{text-align:right;font-size:10px;color:#888;font-weight:700;letter-spacing:1px;}'
-    +'@page{margin:15mm;size:A4;}</style></head><body>';
+  var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>'
+    +'*{box-sizing:border-box;margin:0;padding:0;}'
+    +'body{font-family:Arial,sans-serif;font-size:11px;color:#111;padding:16px 22px;line-height:1.4;}'
+    +'h1{font-size:18px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#003087;margin-bottom:2px;}'
+    +'.sub{font-size:9px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;border-bottom:2px solid #F5C518;padding-bottom:6px;}'
+    +'.info-grid{display:table;width:100%;background:#f2f5f9;border-radius:6px;padding:10px 14px;margin-bottom:10px;border-left:4px solid #003087;}'
+    +'.info-row{display:inline-block;width:49%;vertical-align:top;margin-bottom:4px;}'
+    +'.info-row label{font-size:8px;text-transform:uppercase;letter-spacing:.8px;color:#888;font-weight:700;display:block;margin-bottom:1px;}'
+    +'.info-row span{font-size:12px;font-weight:700;color:#003087;}'
+    +'.pbar{height:6px;background:#dde3ec;border-radius:99px;overflow:hidden;margin-bottom:3px;}'
+    +'.pfill{height:100%;background:#003087;border-radius:99px;width:'+pct+'%;}'
+    +'.plbl{font-size:9px;color:#888;margin-bottom:12px;}'
+    +'.ph{font-size:11px;font-weight:900;text-transform:uppercase;color:#fff;background:#003087;padding:5px 10px;margin:12px 0 3px;border-radius:4px;page-break-after:avoid;}'
+    +'.cat{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#003087;padding:6px 0 2px;border-bottom:1px solid #F5C518;margin-bottom:2px;page-break-after:avoid;}'
+    +'.row{display:table;width:100%;padding:4px 2px;border-bottom:1px solid #f0f0f0;page-break-inside:avoid;}'
+    +'.row:last-child{border-bottom:none;}'
+    +'.chk{display:table-cell;width:18px;vertical-align:top;padding-top:1px;}'
+    +'.chk-circle{width:13px;height:13px;border-radius:50%;border:1.5px solid #ccc;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;}'
+    +'.chk-circle.ok{background:#1DB86B;border-color:#1DB86B;color:#fff;}'
+    +'.lbl{display:table-cell;font-size:10px;color:#111;line-height:1.4;vertical-align:top;}'
+    +'.lbl.done{color:#888;text-decoration:line-through;}'
+    +'.cmt{display:table;width:100%;margin:2px 0 3px 18px;width:calc(100% - 18px);background:#fffbea;border-left:2px solid #F5C518;padding:3px 6px;font-size:9px;color:#666;font-style:italic;page-break-inside:avoid;}'
+    +'.sig-sec{margin-top:20px;padding-top:12px;border-top:2px solid #003087;display:table;width:100%;page-break-inside:avoid;}'
+    +'.sig-left{display:table-cell;vertical-align:bottom;}'
+    +'.sig-right{display:table-cell;vertical-align:bottom;text-align:right;}'
+    +'.sig-lbl{font-size:8px;text-transform:uppercase;letter-spacing:.8px;color:#888;font-weight:700;margin-bottom:3px;}'
+    +'.sig-name{font-size:14px;font-style:italic;font-weight:700;color:#003087;border-bottom:1px solid #ccc;padding-bottom:3px;min-width:160px;display:inline-block;}'
+    +'.sig-date{font-size:9px;color:#555;margin-top:3px;}'
+    +'.re-brand{font-size:9px;color:#aaa;font-weight:700;letter-spacing:1px;}'
+    +'@page{margin:12mm;size:A4;}'
+    +'</style></head><body>';
   html+='<h1>Rugby Europe — Match Commissioner Report</h1><div class="sub">'+userName+' · '+matchCode+' · '+date+'</div>';
   html+='<div class="info-grid">'
     +'<div class="info-row"><label>Commissioner</label><span>'+esc(state['__name']||userName||'—')+'</span></div>'
@@ -719,6 +729,12 @@ function exportPDF(){
   w.document.write(html); w.document.close(); w.focus();
   setTimeout(function(){ w.print(); },500);
 }
+
+// ── NAV buttons — attached ONCE here, never in render ────────────────────
+document.querySelector('.bot-nav').addEventListener('click', function(e) {
+  var btn = e.target.closest('[data-nav]');
+  if (btn) goNav(btn.getAttribute('data-nav'));
+});
 
 document.getElementById('resetBtn').addEventListener('click',function(){ document.getElementById('modal').classList.add('open'); });
 document.getElementById('cancelModal').addEventListener('click',function(){ document.getElementById('modal').classList.remove('open'); });
