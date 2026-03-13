@@ -19,20 +19,49 @@ html,body{height:100%;overflow:hidden;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;background:var(--navy);display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
 .spacer{height:var(--sat);background:linear-gradient(135deg,var(--navy2),var(--navy));flex-shrink:0;}
 
+/* LOGIN */
+#login-screen{position:fixed;inset:0;background:linear-gradient(160deg,var(--navy2),var(--navy),var(--blue));display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;z-index:999;}
+.login-logo{width:72px;height:72px;background:linear-gradient(135deg,var(--gold),#e6b000);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;color:var(--navy2);letter-spacing:2px;margin-bottom:20px;box-shadow:0 6px 24px rgba(0,0,0,0.3);}
+.login-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:4px;text-align:center;}
+.login-sub{font-size:11px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:36px;text-align:center;}
+.login-card{width:100%;max-width:360px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:24px;}
+.login-field{margin-bottom:16px;}
+.login-field label{display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;}
+.login-field input{width:100%;height:50px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:12px;padding:0 14px;font-family:inherit;font-size:15px;font-weight:600;color:#fff;outline:none;-webkit-appearance:none;-webkit-user-select:text;user-select:text;}
+.login-field input::placeholder{color:rgba(255,255,255,0.35);font-weight:400;}
+.login-field input:focus{border-color:var(--gold);}
+.login-btn{width:100%;height:52px;background:var(--gold);border:none;border-radius:14px;font-family:inherit;font-size:16px;font-weight:800;color:var(--navy2);cursor:pointer;margin-top:8px;letter-spacing:.5px;}
+.login-btn:active{opacity:0.85;}
+.login-error{font-size:12px;color:#ff6b6b;text-align:center;margin-top:10px;min-height:18px;}
+.login-note{font-size:11px;color:rgba(255,255,255,0.35);text-align:center;margin-top:14px;line-height:1.5;}
+
+/* HEADER */
 .hdr{background:linear-gradient(135deg,var(--navy2) 0%,var(--navy) 60%,var(--blue) 100%);padding:0 14px;height:64px;display:flex;align-items:center;gap:10px;flex-shrink:0;border-bottom:2px solid var(--gold);}
 .re-badge{width:46px;height:46px;background:linear-gradient(135deg,var(--gold),#e6b000);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:var(--navy2);letter-spacing:1.5px;flex-shrink:0;box-shadow:0 3px 10px rgba(0,0,0,0.3);}
 .hdr-t{flex:1;min-width:0;}
-.hdr-t h1{font-size:16px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}
-.hdr-t p{font-size:9px;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase;margin-top:2px;font-weight:600;}
-.icon-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.12);border:none;color:rgba(255,255,255,0.8);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:18px;}
+.hdr-t h1{font-size:15px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}
+.hdr-t p{font-size:9px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-top:2px;font-weight:600;}
+.hdr-actions{display:flex;gap:6px;}
+.icon-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.12);border:none;color:rgba(255,255,255,0.8);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:16px;}
 
-.prog{padding:10px 16px 12px;background:linear-gradient(135deg,var(--navy2),var(--navy));flex-shrink:0;}
+/* SYNC INDICATOR */
+.sync-bar{background:linear-gradient(135deg,var(--navy2),var(--navy));padding:4px 16px 8px;display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.sync-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;}
+.sync-dot.saving{background:var(--gold);animation:pulse .8s infinite;}
+.sync-dot.offline{background:#e53;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.sync-txt{font-size:10px;color:rgba(255,255,255,0.45);font-weight:600;}
+.sync-user{font-size:10px;color:var(--gold);font-weight:700;margin-left:auto;}
+
+/* PROGRESS */
+.prog{padding:6px 16px 12px;background:linear-gradient(135deg,var(--navy2),var(--navy));flex-shrink:0;}
 .prog-row{display:flex;justify-content:space-between;margin-bottom:6px;}
 .prog-lbl{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
 .prog-n{font-size:12px;font-weight:800;color:var(--gold);}
 .prog-track{height:5px;background:rgba(255,255,255,0.12);border-radius:99px;overflow:hidden;}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),#ffe066);border-radius:99px;width:0%;transition:width .4s;}
 
+/* TABS */
 .tabs{background:linear-gradient(135deg,var(--navy2),var(--navy));display:flex;gap:6px;padding:0 12px 12px;overflow-x:auto;scrollbar-width:none;flex-shrink:0;}
 .tabs::-webkit-scrollbar{display:none;}
 .tab{flex-shrink:0;height:34px;padding:0 13px;border-radius:17px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;border:none;white-space:nowrap;font-family:inherit;}
@@ -43,6 +72,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
 .tab.on .tbadge{background:var(--navy2);color:var(--gold);}
 .tab.done .tbadge{background:var(--green);color:#fff;}
 
+/* SCROLL */
 .scroll{flex:1;background:var(--light);border-radius:20px 20px 0 0;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding-bottom:calc(var(--nav-h) + var(--sab) + 24px);}
 
 /* OVERVIEW */
@@ -67,8 +97,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
 
 /* CHECKLIST */
 .sec-lbl{padding:18px 16px 8px;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--gray);text-transform:uppercase;}
-.sub-tabs{display:flex;gap:6px;padding:0 12px 10px;overflow-x:auto;scrollbar-width:none;}
-.sub-tabs::-webkit-scrollbar{display:none;}
 .cat-hdr{padding:10px 16px 6px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);background:rgba(0,48,135,0.04);border-left:3px solid var(--gold);margin:4px 12px 2px;border-radius:0 6px 6px 0;}
 .cl-group{margin:0 12px 6px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,48,135,.08);border:1px solid var(--border);}
 .cl-item{display:flex;align-items:flex-start;min-height:54px;padding:14px 16px;border-bottom:1px solid var(--border);background:#fff;position:relative;cursor:pointer;}
@@ -118,6 +146,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
 .pip{position:absolute;top:-2px;right:-4px;width:8px;height:8px;background:#e53;border-radius:50%;border:1.5px solid #fff;display:none;}
 .pip.on{display:block;}
 
+/* MODAL */
 .overlay{position:fixed;inset:0;background:rgba(0,24,80,.6);z-index:400;display:none;align-items:flex-end;}
 .overlay.open{display:flex;}
 .sheet{width:100%;background:#fff;border-radius:24px 24px 0 0;padding:20px 24px calc(28px + var(--sab));animation:up .3s cubic-bezier(.22,1,.36,1);}
@@ -131,39 +160,70 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
 </style>
 </head>
 <body>
-<div class="spacer"></div>
-<div class="hdr">
-  <div class="re-badge">RE</div>
-  <div class="hdr-t">
-    <h1>Match Commissioner</h1>
-    <p>Rugby Europe — Official Check-list</p>
-  </div>
-  <button class="icon-btn" id="resetBtn">&#8635;</button>
-</div>
-<div class="prog">
-  <div class="prog-row"><span class="prog-lbl">Overall Progress</span><span class="prog-n" id="pn">0 / 0</span></div>
-  <div class="prog-track"><div class="prog-fill" id="pf"></div></div>
-</div>
-<div class="tabs" id="tabs"></div>
-<div class="scroll" id="scroll"></div>
 
-<nav class="bot-nav">
-  <button class="nav-btn on" id="nb-overview" onclick="goNav('overview')">
-    <span class="nav-ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="12" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="2" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="12" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/></svg></span>
-    <span class="nav-lbl">Overview</span>
-  </button>
-  <button class="nav-btn" id="nb-checklist" onclick="goNav('checklist')">
-    <span class="nav-ic">
-      <div class="pip" id="pip"></div>
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 6h14M4 11h14M4 16h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="18" cy="16" r="3.2" stroke="currentColor" stroke-width="1.7"/><path d="M16.8 16l.9 1 1.8-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-    </span>
-    <span class="nav-lbl">Check-list</span>
-  </button>
-  <button class="nav-btn" id="nb-info" onclick="goNav('info')">
-    <span class="nav-ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M11 10v5M11 7.5v.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-    <span class="nav-lbl">Match Info</span>
-  </button>
-</nav>
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-logo">RE</div>
+  <div class="login-title">Match Commissioner</div>
+  <div class="login-sub">Rugby Europe — Official</div>
+  <div class="login-card">
+    <div class="login-field">
+      <label>Your name</label>
+      <input type="text" id="login-name" placeholder="e.g. John Smith" autocomplete="name">
+    </div>
+    <div class="login-field">
+      <label>Match code</label>
+      <input type="text" id="login-match" placeholder="e.g. FRA-ESP-2026" autocomplete="off" style="text-transform:uppercase;">
+    </div>
+    <button class="login-btn" id="login-btn">Start / Resume Session</button>
+    <div class="login-error" id="login-error"></div>
+    <div class="login-note">Your data is saved in the cloud and accessible from any device using the same name and match code.</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none;flex-direction:column;height:100%;">
+  <div class="spacer"></div>
+  <div class="hdr">
+    <div class="re-badge">RE</div>
+    <div class="hdr-t">
+      <h1>Match Commissioner</h1>
+      <p id="hdr-session">Rugby Europe</p>
+    </div>
+    <div class="hdr-actions">
+      <button class="icon-btn" id="resetBtn" title="Reset">&#8635;</button>
+      <button class="icon-btn" id="logoutBtn" title="Change session">&#8594;</button>
+    </div>
+  </div>
+  <div class="sync-bar">
+    <div class="sync-dot" id="sync-dot"></div>
+    <span class="sync-txt" id="sync-txt">Synced</span>
+    <span class="sync-user" id="sync-user"></span>
+  </div>
+  <div class="prog">
+    <div class="prog-row"><span class="prog-lbl">Overall Progress</span><span class="prog-n" id="pn">0 / 0</span></div>
+    <div class="prog-track"><div class="prog-fill" id="pf"></div></div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="scroll" id="scroll"></div>
+  <nav class="bot-nav">
+    <button class="nav-btn on" id="nb-overview" onclick="goNav('overview')">
+      <span class="nav-ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="12" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="2" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="12" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/></svg></span>
+      <span class="nav-lbl">Overview</span>
+    </button>
+    <button class="nav-btn" id="nb-checklist" onclick="goNav('checklist')">
+      <span class="nav-ic">
+        <div class="pip" id="pip"></div>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 6h14M4 11h14M4 16h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="18" cy="16" r="3.2" stroke="currentColor" stroke-width="1.7"/><path d="M16.8 16l.9 1 1.8-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </span>
+      <span class="nav-lbl">Check-list</span>
+    </button>
+    <button class="nav-btn" id="nb-info" onclick="goNav('info')">
+      <span class="nav-ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M11 10v5M11 7.5v.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+      <span class="nav-lbl">Match Info</span>
+    </button>
+  </nav>
+</div>
 
 <div class="overlay" id="modal">
   <div class="sheet">
@@ -175,7 +235,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
 </div>
 <div class="toast" id="toast"></div>
 
-<script>
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDPj5Pf0am8Ft5yVFpuqd1gyt9lxVHNSEk",
+  authDomain: "mc-check-list.firebaseapp.com",
+  projectId: "mc-check-list",
+  storageBucket: "mc-check-list.firebasestorage.app",
+  messagingSenderId: "942455055744",
+  appId: "1:942455055744:web:6500f2c44bc4ad10b80d65"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 // ── DATA ─────────────────────────────────────────────────────────────────
 var phases = [
   {id:"j7", label:"D-7", desc:"7 days before the match", items:[
@@ -250,7 +325,6 @@ var phases = [
     {id:"md_12", text:"Report any discipline matters (red cards, citing, misconduct…)"},
     {id:"md_13", text:"Copy of video of the game for referee + Team managers"}
   ]},
-  // ── MANAGERS MEETING (subsections) ──────────────────────────────────────
   {id:"mm", label:"Mgr Meeting", desc:"Managers Meeting", subsections:[
     {id:"mm_s1", label:"Venue Tour", desc:"Venue Tour & Key Areas", items:[
       {id:"mm_1_1", text:"Team arrival point and access route"},
@@ -325,324 +399,337 @@ var phases = [
 
 // ── HELPERS ───────────────────────────────────────────────────────────────
 function phaseItems(p) {
-  if (p.subsections) {
-    return p.subsections.reduce(function(a, s){ return a.concat(s.items); }, []);
-  }
+  if (p.subsections) return p.subsections.reduce(function(a,s){ return a.concat(s.items); }, []);
   return p.items.filter(function(i){ return !i.cat; });
 }
-function allItems() {
-  return phases.reduce(function(a, p){ return a.concat(phaseItems(p)); }, []);
-}
-function phaseDone(p) {
-  var it = phaseItems(p);
-  return it.length > 0 && it.every(function(i){ return state[i.id] && state[i.id].c; });
-}
-function phasePct(p) {
-  var it = phaseItems(p);
-  if (!it.length) return 0;
-  return Math.round(it.filter(function(i){ return state[i.id] && state[i.id].c; }).length / it.length * 100);
-}
+function allItems() { return phases.reduce(function(a,p){ return a.concat(phaseItems(p)); }, []); }
+function phaseDone(p) { var it=phaseItems(p); return it.length>0&&it.every(function(i){ return state[i.id]&&state[i.id].c; }); }
+function phasePct(p) { var it=phaseItems(p); if(!it.length)return 0; return Math.round(it.filter(function(i){ return state[i.id]&&state[i.id].c; }).length/it.length*100); }
 function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function slugify(s){ return s.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-'); }
 
 // ── STATE ─────────────────────────────────────────────────────────────────
-var state = {}, hasLS = false, curNav = 'overview', curPhase = 'j7', curSubSec = 'mm_s1', toastT = null;
-try { localStorage.setItem('_x','1'); localStorage.removeItem('_x'); hasLS = true; } catch(e) {}
-function save(){ try { if(hasLS) localStorage.setItem('remc7', JSON.stringify(state)); } catch(e){} }
-function load(){ try { var s = hasLS ? localStorage.getItem('remc7') : null; if(s) state = JSON.parse(s); } catch(e){ state={}; } }
+var state={}, curNav='overview', curPhase='j7', curSubSec='mm_s1', toastT=null;
+var sessionKey='', userName='', matchCode='', saveTimer=null;
+
+// ── FIREBASE ──────────────────────────────────────────────────────────────
+function setSyncStatus(status) {
+  var dot=document.getElementById('sync-dot'), txt=document.getElementById('sync-txt');
+  if(status==='saving'){ dot.className='sync-dot saving'; txt.textContent='Saving…'; }
+  else if(status==='saved'){ dot.className='sync-dot'; txt.textContent='Synced'; }
+  else { dot.className='sync-dot offline'; txt.textContent='Offline — local save only'; }
+}
+
+async function loadFromFirebase() {
+  try {
+    var ref = doc(db, 'sessions', sessionKey);
+    var snap = await getDoc(ref);
+    if (snap.exists()) { state = snap.data().state || {}; }
+    else { state = {}; }
+    setSyncStatus('saved');
+  } catch(e) {
+    console.warn('Firebase load failed, using local', e);
+    setSyncStatus('offline');
+    try { var ls=localStorage.getItem('remc_'+sessionKey); if(ls) state=JSON.parse(ls); } catch(e2){}
+  }
+}
+
+async function saveToFirebase() {
+  setSyncStatus('saving');
+  try {
+    var ref = doc(db, 'sessions', sessionKey);
+    await setDoc(ref, { state: state, user: userName, match: matchCode, updatedAt: new Date().toISOString() });
+    setSyncStatus('saved');
+  } catch(e) {
+    console.warn('Firebase save failed', e);
+    setSyncStatus('offline');
+  }
+  try { localStorage.setItem('remc_'+sessionKey, JSON.stringify(state)); } catch(e){}
+}
+
+function debounceSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveToFirebase, 800);
+}
+
+// ── LOGIN ─────────────────────────────────────────────────────────────────
+document.getElementById('login-btn').addEventListener('click', doLogin);
+document.getElementById('login-name').addEventListener('keydown', function(e){ if(e.key==='Enter') document.getElementById('login-match').focus(); });
+document.getElementById('login-match').addEventListener('keydown', function(e){ if(e.key==='Enter') doLogin(); });
+document.getElementById('login-match').addEventListener('input', function(){ this.value=this.value.toUpperCase(); });
+
+async function doLogin() {
+  var name = document.getElementById('login-name').value.trim();
+  var match = document.getElementById('login-match').value.trim().toUpperCase();
+  var err = document.getElementById('login-error');
+  if (!name) { err.textContent = 'Please enter your name.'; return; }
+  if (!match) { err.textContent = 'Please enter a match code.'; return; }
+  err.textContent = '';
+  document.getElementById('login-btn').textContent = 'Loading…';
+  document.getElementById('login-btn').disabled = true;
+  userName = name; matchCode = match;
+  sessionKey = slugify(name) + '_' + slugify(match);
+  document.getElementById('sync-user').textContent = name + ' · ' + match;
+  document.getElementById('hdr-session').textContent = match;
+  await loadFromFirebase();
+  document.getElementById('login-screen').style.display = 'none';
+  var appEl = document.getElementById('app');
+  appEl.style.display = 'flex';
+  render();
+  document.getElementById('login-btn').textContent = 'Start / Resume Session';
+  document.getElementById('login-btn').disabled = false;
+}
+
+// ── LOGOUT ────────────────────────────────────────────────────────────────
+document.getElementById('logoutBtn').addEventListener('click', function(){
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  state = {}; sessionKey = ''; curNav='overview'; curPhase='j7';
+});
 
 // ── NAV ───────────────────────────────────────────────────────────────────
 function goNav(n) {
-  curNav = n;
+  curNav=n;
   document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.remove('on'); });
-  var el = document.getElementById('nb-'+n); if(el) el.classList.add('on');
+  var el=document.getElementById('nb-'+n); if(el)el.classList.add('on');
   render();
 }
 
 function render() {
   updateProg(); buildTabs();
-  if (curNav === 'overview') renderOverview();
-  else if (curNav === 'checklist') renderChecklist();
+  if(curNav==='overview') renderOverview();
+  else if(curNav==='checklist') renderChecklist();
   else renderInfo();
   updatePip();
 }
 
 function updateProg() {
-  var all = allItems(), done = all.filter(function(i){ return state[i.id] && state[i.id].c; }).length;
-  document.getElementById('pn').textContent = done + ' / ' + all.length;
-  document.getElementById('pf').style.width = (all.length ? done/all.length*100 : 0) + '%';
+  var all=allItems(), done=all.filter(function(i){ return state[i.id]&&state[i.id].c; }).length;
+  document.getElementById('pn').textContent=done+' / '+all.length;
+  document.getElementById('pf').style.width=(all.length?done/all.length*100:0)+'%';
 }
 function updatePip() {
-  var any = allItems().some(function(i){ return !state[i.id] || !state[i.id].c; });
-  document.getElementById('pip').className = 'pip' + (any ? ' on' : '');
+  var any=allItems().some(function(i){ return !state[i.id]||!state[i.id].c; });
+  document.getElementById('pip').className='pip'+(any?' on':'');
 }
 
-// ── TABS ──────────────────────────────────────────────────────────────────
 function buildTabs() {
-  var bar = document.getElementById('tabs');
-  if (curNav !== 'checklist') { bar.style.display = 'none'; return; }
-  bar.style.display = 'flex';
-  var h = '';
+  var bar=document.getElementById('tabs');
+  if(curNav!=='checklist'){ bar.style.display='none'; return; }
+  bar.style.display='flex';
+  var h='';
   phases.forEach(function(p) {
-    var it = phaseItems(p), d = it.filter(function(i){ return state[i.id] && state[i.id].c; }).length;
-    h += '<button class="tab ' + (p.id===curPhase?'on':'off') + (phaseDone(p)?' done':'') + '" data-p="'+p.id+'">'
-      + p.label + '<span class="tbadge">'+d+'/'+it.length+'</span></button>';
+    var it=phaseItems(p), d=it.filter(function(i){ return state[i.id]&&state[i.id].c; }).length;
+    h+='<button class="tab '+(p.id===curPhase?'on':'off')+(phaseDone(p)?' done':'')+'" data-p="'+p.id+'">'
+      +p.label+'<span class="tbadge">'+d+'/'+it.length+'</span></button>';
   });
-  bar.innerHTML = h;
-  bar.querySelectorAll('.tab').forEach(function(b) {
-    b.addEventListener('click', function(){ curPhase = this.getAttribute('data-p'); render(); });
-  });
+  bar.innerHTML=h;
+  bar.querySelectorAll('.tab').forEach(function(b){ b.addEventListener('click',function(){ curPhase=this.getAttribute('data-p'); render(); }); });
 }
 
-// ── OVERVIEW ──────────────────────────────────────────────────────────────
 function renderOverview() {
-  var all = allItems(), done = all.filter(function(i){ return state[i.id] && state[i.id].c; }).length;
-  var pct = all.length ? Math.round(done/all.length*100) : 0, deg = pct * 3.6;
-  var bg = 'conic-gradient(#F5C518 '+deg+'deg, rgba(255,255,255,0.15) '+deg+'deg)';
-  var h = '<div class="ov-total">'
-    + '<div class="ov-ring" style="background:'+bg+'"><div class="ov-inner">'+pct+'%</div></div>'
-    + '<div class="ov-txt"><h3>'+done+' / '+all.length+' validated</h3><p>Tap a phase to continue</p></div>'
-    + '</div><div class="ov-grid">';
+  var all=allItems(), done=all.filter(function(i){ return state[i.id]&&state[i.id].c; }).length;
+  var pct=all.length?Math.round(done/all.length*100):0, deg=pct*3.6;
+  var bg='conic-gradient(#F5C518 '+deg+'deg,rgba(255,255,255,0.15) '+deg+'deg)';
+  var h='<div class="ov-total"><div class="ov-ring" style="background:'+bg+'"><div class="ov-inner">'+pct+'%</div></div>'
+    +'<div class="ov-txt"><h3>'+done+' / '+all.length+' validated</h3><p>Tap a phase to continue</p></div></div><div class="ov-grid">';
   phases.forEach(function(p) {
-    var it = phaseItems(p), d = it.filter(function(i){ return state[i.id] && state[i.id].c; }).length;
-    var pp = phasePct(p), dn = phaseDone(p);
-    h += '<div class="pc'+(dn?' done':'')+'" data-p="'+p.id+'">'
-      + '<div class="pc-top"><div class="pc-label">'+p.label+'</div><div class="pc-desc">'+p.desc+'</div></div>'
-      + '<div class="pc-bar"><div class="pc-fill" style="width:'+pp+'%"></div></div>'
-      + '<div class="pc-bot"><span class="pc-pct">'+d+'/'+it.length+'</span><span class="pc-done">&#10003; Done</span></div>'
-      + '</div>';
+    var it=phaseItems(p), d=it.filter(function(i){ return state[i.id]&&state[i.id].c; }).length, pp=phasePct(p), dn=phaseDone(p);
+    h+='<div class="pc'+(dn?' done':'')+'" data-p="'+p.id+'">'
+      +'<div class="pc-top"><div class="pc-label">'+p.label+'</div><div class="pc-desc">'+p.desc+'</div></div>'
+      +'<div class="pc-bar"><div class="pc-fill" style="width:'+pp+'%"></div></div>'
+      +'<div class="pc-bot"><span class="pc-pct">'+d+'/'+it.length+'</span><span class="pc-done">&#10003; Done</span></div></div>';
   });
-  h += '</div><button class="export-btn" id="expBtn">&#8659;&nbsp; Export PDF Report</button>';
-  var sc = document.getElementById('scroll'); sc.innerHTML = h;
-  sc.querySelectorAll('.pc').forEach(function(c) {
-    c.addEventListener('click', function(){ curPhase = this.getAttribute('data-p'); goNav('checklist'); });
-  });
+  h+='</div><button class="export-btn" id="expBtn">&#8659;&nbsp; Export PDF Report</button>';
+  var sc=document.getElementById('scroll'); sc.innerHTML=h;
+  sc.querySelectorAll('.pc').forEach(function(c){ c.addEventListener('click',function(){ curPhase=this.getAttribute('data-p'); goNav('checklist'); }); });
   document.getElementById('expBtn').addEventListener('click', exportPDF);
 }
 
-// ── CHECKLIST ─────────────────────────────────────────────────────────────
 function renderChecklist() {
-  var phase = null;
-  for (var i = 0; i < phases.length; i++) { if (phases[i].id === curPhase) { phase = phases[i]; break; } }
-  if (!phase) return;
-  var sc = document.getElementById('scroll');
-  var h = '<div class="sec-lbl">' + phase.desc + '</div>';
+  var phase=null;
+  for(var i=0;i<phases.length;i++){ if(phases[i].id===curPhase){ phase=phases[i]; break; } }
+  if(!phase)return;
+  var sc=document.getElementById('scroll');
+  var h='<div class="sec-lbl">'+phase.desc+'</div>';
 
-  if (phase.subsections) {
-    // ── Sub-tabs row ──
-    h += '<div style="display:flex;gap:6px;padding:0 12px 10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;">';
-    phase.subsections.forEach(function(sub) {
-      var d = sub.items.filter(function(i){ return state[i.id] && state[i.id].c; }).length;
-      var dn = (d === sub.items.length);
-      var isOn = (curSubSec === sub.id);
-      var bg = isOn ? 'background:var(--gold);color:var(--navy2);' : 'background:rgba(0,48,135,0.1);color:var(--navy);';
-      var badgeBg = isOn ? 'background:var(--navy2);color:var(--gold);' : 'background:rgba(0,48,135,0.15);color:var(--navy);';
-      if (dn) badgeBg = 'background:var(--green);color:#fff;';
-      h += '<button data-sub="'+sub.id+'" style="flex-shrink:0;height:34px;padding:0 13px;border-radius:17px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:5px;border:none;white-space:nowrap;font-family:inherit;'+bg+'">'
-        + sub.label
-        + '<span style="min-width:18px;height:18px;border-radius:9px;font-size:10px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 4px;'+badgeBg+'">'+d+'/'+sub.items.length+'</span>'
-        + '</button>';
+  if(phase.subsections){
+    h+='<div style="display:flex;gap:6px;padding:0 12px 10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;">';
+    phase.subsections.forEach(function(sub){
+      var d=sub.items.filter(function(i){ return state[i.id]&&state[i.id].c; }).length;
+      var dn=(d===sub.items.length), isOn=(curSubSec===sub.id);
+      var bg=isOn?'background:#F5C518;color:#001a5e;':'background:rgba(0,48,135,0.1);color:#003087;';
+      var bb=isOn?'background:#001a5e;color:#F5C518;':'background:rgba(0,48,135,0.15);color:#003087;';
+      if(dn)bb='background:#1DB86B;color:#fff;';
+      h+='<button data-sub="'+sub.id+'" style="flex-shrink:0;height:34px;padding:0 13px;border-radius:17px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:5px;border:none;white-space:nowrap;font-family:inherit;'+bg+'">'
+        +sub.label+'<span style="min-width:18px;height:18px;border-radius:9px;font-size:10px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 4px;'+bb+'">'+d+'/'+sub.items.length+'</span></button>';
     });
-    h += '</div>';
-
-    // ── Active subsection items ──
-    var activeSub = null;
-    for (var j = 0; j < phase.subsections.length; j++) {
-      if (phase.subsections[j].id === curSubSec) { activeSub = phase.subsections[j]; break; }
-    }
-    if (!activeSub) { activeSub = phase.subsections[0]; curSubSec = activeSub.id; }
-    h += '<div class="cat-hdr">' + activeSub.desc + '</div>';
-    h += '<div class="cl-group">';
-    activeSub.items.forEach(function(item) {
-      h += buildItemHTML(item);
-    });
-    h += '</div>';
-
+    h+='</div>';
+    var activeSub=null;
+    for(var j=0;j<phase.subsections.length;j++){ if(phase.subsections[j].id===curSubSec){ activeSub=phase.subsections[j]; break; } }
+    if(!activeSub){ activeSub=phase.subsections[0]; curSubSec=activeSub.id; }
+    h+='<div class="cat-hdr">'+activeSub.desc+'</div><div class="cl-group">';
+    activeSub.items.forEach(function(item){ h+=buildItemHTML(item); });
+    h+='</div>';
   } else {
-    // ── Normal phase with flat items / cat headers ──
-    var inG = false;
-    phase.items.forEach(function(item) {
-      if (item.cat) {
-        if (inG) { h += '</div>'; inG = false; }
-        h += '<div class="cat-hdr">'+item.text+'</div><div class="cl-group">'; inG = true;
-      } else {
-        if (!inG) { h += '<div class="cl-group">'; inG = true; }
-        h += buildItemHTML(item);
-      }
+    var inG=false;
+    phase.items.forEach(function(item){
+      if(item.cat){ if(inG){h+='</div>';inG=false;} h+='<div class="cat-hdr">'+item.text+'</div><div class="cl-group">'; inG=true; }
+      else { if(!inG){h+='<div class="cl-group">';inG=true;} h+=buildItemHTML(item); }
     });
-    if (inG) h += '</div>';
+    if(inG)h+='</div>';
   }
 
-  sc.innerHTML = h;
-
-  // Sub-tab click events
-  if (phase.subsections) {
-    sc.querySelectorAll('[data-sub]').forEach(function(b) {
-      b.addEventListener('click', function(e) {
-        e.stopPropagation();
-        curSubSec = this.getAttribute('data-sub');
-        renderChecklist();
-      });
+  sc.innerHTML=h;
+  if(phase.subsections){
+    sc.querySelectorAll('[data-sub]').forEach(function(b){
+      b.addEventListener('click',function(e){ e.stopPropagation(); curSubSec=this.getAttribute('data-sub'); renderChecklist(); });
     });
   }
-
-  // Item events
-  sc.querySelectorAll('.cl-item').forEach(function(el) {
-    var id = el.getAttribute('data-id');
-    var cw = el.querySelector('.chk-wrap'), tx = el.querySelector('.item-txt');
-    var nb = el.querySelector('.note-btn'), ta = el.querySelector('.note-ta');
+  sc.querySelectorAll('.cl-item').forEach(function(el){
+    var id=el.getAttribute('data-id');
+    var cw=el.querySelector('.chk-wrap'), tx=el.querySelector('.item-txt');
+    var nb=el.querySelector('.note-btn'), ta=el.querySelector('.note-ta');
     function tog(e){ e.stopPropagation(); doToggle(id); }
-    cw.addEventListener('click', tog); tx.addEventListener('click', tog);
-    if (nb) nb.addEventListener('click', function(e){ e.stopPropagation(); ta.classList.toggle('open'); if(ta.classList.contains('open')) setTimeout(function(){ ta.focus(); }, 50); });
-    if (ta) {
-      ta.addEventListener('input', function(e){ e.stopPropagation(); doNote(id, ta.value); });
-      ta.addEventListener('click', function(e){ e.stopPropagation(); });
-      ta.addEventListener('touchstart', function(e){ e.stopPropagation(); }, {passive:true});
+    cw.addEventListener('click',tog); tx.addEventListener('click',tog);
+    if(nb)nb.addEventListener('click',function(e){ e.stopPropagation(); ta.classList.toggle('open'); if(ta.classList.contains('open'))setTimeout(function(){ ta.focus(); },50); });
+    if(ta){
+      ta.addEventListener('input',function(e){ e.stopPropagation(); doNote(id,ta.value); });
+      ta.addEventListener('click',function(e){ e.stopPropagation(); });
+      ta.addEventListener('touchstart',function(e){ e.stopPropagation(); },{passive:true});
     }
   });
 }
 
-function buildItemHTML(item) {
-  var s = state[item.id] || {c:false, n:''}, hn = !!s.n;
+function buildItemHTML(item){
+  var s=state[item.id]||{c:false,n:''}, hn=!!s.n;
   return '<div class="cl-item'+(s.c?' checked':'')+'" data-id="'+item.id+'">'
-    + '<div class="chk-wrap"><div class="chk-circle"><span class="chk-icon">&#10003;</span></div></div>'
-    + '<div class="item-body"><div class="item-txt">'+item.text+'</div>'
-    + (item.note ? '<div class="item-note">&#9888; '+item.note+'</div>' : '')
-    + '<button class="note-btn'+(hn?' has':'')+'">'+(hn?'&#128204; View note':'+ Add a note')+'</button>'
-    + '<textarea class="note-ta'+(hn?' open':'')+'" rows="2" placeholder="Add a note…">'+esc(s.n)+'</textarea>'
-    + '</div></div>';
+    +'<div class="chk-wrap"><div class="chk-circle"><span class="chk-icon">&#10003;</span></div></div>'
+    +'<div class="item-body"><div class="item-txt">'+item.text+'</div>'
+    +(item.note?'<div class="item-note">&#9888; '+item.note+'</div>':'')
+    +'<button class="note-btn'+(hn?' has':'')+'">'+(hn?'&#128204; View note':'+ Add a note')+'</button>'
+    +'<textarea class="note-ta'+(hn?' open':'')+'" rows="2" placeholder="Add a note…">'+esc(s.n)+'</textarea>'
+    +'</div></div>';
 }
 
-// ── INFO ──────────────────────────────────────────────────────────────────
-function renderInfo() {
-  var sc = document.getElementById('scroll');
-  sc.innerHTML = '<div class="match-card"><div class="mc-hdr">Match Information</div><div class="mc-fields">'
-    + '<div class="mc-field"><label>Commissioner</label><input type="text" id="fi-name" placeholder="Full name…"></div>'
-    + '<div class="mc-field"><label>Union</label><input type="text" id="fi-union" placeholder="Union…"></div>'
-    + '<div class="mc-field"><label>Match / Division</label><input type="text" id="fi-match" placeholder="France vs Spain…"></div>'
-    + '<div class="mc-field"><label>Venue / Stadium</label><input type="text" id="fi-venue" placeholder="Stadium name…"></div>'
-    + '</div></div>'
-    + '<div class="sig-card"><div class="sig-hdr">Match Commissioner Signature</div>'
-    + '<div class="sig-body"><label>Full name (signature)</label>'
-    + '<input type="text" id="fi-sig" placeholder="First Last…"></div></div>';
+function renderInfo(){
+  var sc=document.getElementById('scroll');
+  sc.innerHTML='<div class="match-card"><div class="mc-hdr">Match Information</div><div class="mc-fields">'
+    +'<div class="mc-field"><label>Commissioner</label><input type="text" id="fi-name" placeholder="Full name…"></div>'
+    +'<div class="mc-field"><label>Union</label><input type="text" id="fi-union" placeholder="Union…"></div>'
+    +'<div class="mc-field"><label>Match / Division</label><input type="text" id="fi-match" placeholder="France vs Spain…"></div>'
+    +'<div class="mc-field"><label>Venue / Stadium</label><input type="text" id="fi-venue" placeholder="Stadium name…"></div>'
+    +'</div></div>'
+    +'<div class="sig-card"><div class="sig-hdr">Match Commissioner Signature</div>'
+    +'<div class="sig-body"><label>Full name (signature)</label>'
+    +'<input type="text" id="fi-sig" placeholder="First Last…"></div></div>';
   setTimeout(function(){
-    bind('fi-name','__name'); bind('fi-union','__union');
-    bind('fi-match','__match'); bind('fi-venue','__venue'); bind('fi-sig','__sig');
-  }, 0);
+    bindF('fi-name','__name'); bindF('fi-union','__union'); bindF('fi-match','__match'); bindF('fi-venue','__venue'); bindF('fi-sig','__sig');
+  },0);
 }
-function bind(elId, key) {
-  var el = document.getElementById(elId); if(!el) return;
-  el.value = state[key] || '';
-  el.addEventListener('input', function(){ state[key] = el.value; save(); });
+function bindF(elId,key){
+  var el=document.getElementById(elId); if(!el)return;
+  el.value=state[key]||'';
+  el.addEventListener('input',function(){ state[key]=el.value; debounceSave(); });
 }
 
-// ── ACTIONS ───────────────────────────────────────────────────────────────
-function doToggle(id) {
-  if (!state[id]) state[id] = {c:false, n:''};
-  state[id].c = !state[id].c; save();
-  var el = document.querySelector('.cl-item[data-id="'+id+'"]');
-  if (el) el.className = 'cl-item' + (state[id].c ? ' checked' : '');
+function doToggle(id){
+  if(!state[id])state[id]={c:false,n:''};
+  state[id].c=!state[id].c;
+  var el=document.querySelector('.cl-item[data-id="'+id+'"]');
+  if(el)el.className='cl-item'+(state[id].c?' checked':'');
   updateProg(); buildTabs(); updatePip();
-  showToast(state[id].c ? '&#10003; Validated' : '&#9675; Unchecked');
+  showToast(state[id].c?'&#10003; Validated':'&#9675; Unchecked');
+  debounceSave();
 }
-function doNote(id, val) {
-  if (!state[id]) state[id] = {c:false, n:''}; state[id].n = val; save();
-  var el = document.querySelector('.cl-item[data-id="'+id+'"]'); if(!el) return;
-  var btn = el.querySelector('.note-btn');
-  if (btn) { btn.className = 'note-btn'+(val?' has':''); btn.innerHTML = val ? '&#128204; View note' : '+ Add a note'; }
+function doNote(id,val){
+  if(!state[id])state[id]={c:false,n:''}; state[id].n=val;
+  var el=document.querySelector('.cl-item[data-id="'+id+'"]'); if(!el)return;
+  var btn=el.querySelector('.note-btn');
+  if(btn){ btn.className='note-btn'+(val?' has':''); btn.innerHTML=val?'&#128204; View note':'+ Add a note'; }
+  debounceSave();
 }
-function showToast(msg) {
-  var t = document.getElementById('toast'); t.innerHTML = msg; t.className = 'toast on';
-  clearTimeout(toastT); toastT = setTimeout(function(){ t.className = 'toast'; }, 1800);
+function showToast(msg){
+  var t=document.getElementById('toast'); t.innerHTML=msg; t.className='toast on';
+  clearTimeout(toastT); toastT=setTimeout(function(){ t.className='toast'; },1800);
 }
 
-// ── PDF EXPORT ────────────────────────────────────────────────────────────
-function exportPDF() {
-  var all = allItems(), done = all.filter(function(i){ return state[i.id] && state[i.id].c; }).length;
-  var pct = all.length ? Math.round(done/all.length*100) : 0;
-  var date = new Date().toLocaleDateString('en-GB', {day:'2-digit', month:'long', year:'numeric'});
-  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">'
-    + '<style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;font-size:12px;color:#111;padding:20px 28px;}'
-    + 'h1{font-size:20px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#003087;margin-bottom:2px;}'
-    + '.sub{font-size:9px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;border-bottom:2px solid #F5C518;padding-bottom:8px;}'
-    + '.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;background:#f2f5f9;border-radius:8px;padding:12px 16px;margin-bottom:12px;border-left:4px solid #003087;}'
-    + '.info-row label{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:#888;font-weight:700;display:block;margin-bottom:2px;}'
-    + '.info-row span{font-size:13px;font-weight:700;color:#003087;}'
-    + '.pbar{height:8px;background:#dde3ec;border-radius:99px;overflow:hidden;margin-bottom:4px;}'
-    + '.pfill{height:100%;background:linear-gradient(90deg,#003087,#1a56c4);border-radius:99px;width:'+pct+'%;}'
-    + '.plbl{font-size:10px;color:#888;margin-bottom:14px;}'
-    + '.ph-title{font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#fff;background:#003087;padding:7px 12px;margin:14px 0 4px;border-radius:6px;}'
-    + '.cat-t{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#003087;padding:8px 0 3px;border-bottom:1px solid #F5C518;margin-bottom:3px;}'
-    + '.row{display:flex;align-items:flex-start;padding:5px 4px;border-bottom:1px solid #eee;gap:10px;}'
-    + '.row:last-child{border-bottom:none;}'
-    + '.chk{width:16px;height:16px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;}'
-    + '.chk.ok{background:#1DB86B;border-color:#1DB86B;color:#fff;}'
-    + '.lbl{flex:1;font-size:11px;color:#111;line-height:1.4;}'
-    + '.lbl.done{color:#5a7a6a;text-decoration:line-through;}'
-    + '.cmt{margin:3px 0 4px 26px;background:#fffbea;border-left:3px solid #F5C518;padding:5px 8px;font-size:10px;color:#555;border-radius:0 4px 4px 0;font-style:italic;}'
-    + '.sig-sec{margin-top:24px;padding-top:14px;border-top:3px solid #003087;display:flex;justify-content:space-between;align-items:flex-end;}'
-    + '.sig-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:#888;font-weight:700;margin-bottom:4px;}'
-    + '.sig-name{font-size:16px;font-style:italic;font-weight:700;color:#003087;border-bottom:1px solid #ccc;padding-bottom:4px;min-width:180px;}'
-    + '.sig-date{font-size:10px;color:#555;margin-top:4px;}'
-    + '.re-brand{text-align:right;font-size:10px;color:#888;font-weight:700;letter-spacing:1px;}'
-    + '@page{margin:15mm;size:A4;}'
-    + '</style></head><body>';
-  html += '<h1>Rugby Europe — Match Commissioner Report</h1>'
-    + '<div class="sub">Official Check-list &nbsp;·&nbsp; '+date+'</div>';
-  html += '<div class="info-grid">'
-    + '<div class="info-row"><label>Commissioner</label><span>'+esc(state['__name']||'—')+'</span></div>'
-    + '<div class="info-row"><label>Union</label><span>'+esc(state['__union']||'—')+'</span></div>'
-    + '<div class="info-row"><label>Match / Division</label><span>'+esc(state['__match']||'—')+'</span></div>'
-    + '<div class="info-row"><label>Venue / Stadium</label><span>'+esc(state['__venue']||'—')+'</span></div>'
-    + '</div>';
-  html += '<div class="pbar"><div class="pfill"></div></div>'
-    + '<div class="plbl">'+done+' / '+all.length+' items validated ('+pct+'%)</div>';
-
-  phases.forEach(function(p) {
-    if (p.subsections) {
-      html += '<div class="ph-title">'+p.label+' — '+p.desc+'</div>';
-      p.subsections.forEach(function(sub) {
-        var d = sub.items.filter(function(i){ return state[i.id] && state[i.id].c; }).length;
-        html += '<div class="cat-t">'+sub.desc+' ('+d+'/'+sub.items.length+')</div>';
-        sub.items.forEach(function(item) {
-          var s = state[item.id] || {c:false, n:''};
-          html += '<div class="row"><div class="chk'+(s.c?' ok':'')+'>'+(s.c?'&#10003;':'')+'</div>'
-            + '<div class="lbl'+(s.c?' done':'')+'">'+item.text+'</div></div>';
-          if (s.n) html += '<div class="cmt">&#128204; '+esc(s.n)+'</div>';
+function exportPDF(){
+  var all=allItems(), done=all.filter(function(i){ return state[i.id]&&state[i.id].c; }).length;
+  var pct=all.length?Math.round(done/all.length*100):0;
+  var date=new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});
+  var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;font-size:12px;color:#111;padding:20px 28px;}'
+    +'h1{font-size:20px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#003087;margin-bottom:2px;}'
+    +'.sub{font-size:9px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;border-bottom:2px solid #F5C518;padding-bottom:8px;}'
+    +'.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;background:#f2f5f9;border-radius:8px;padding:12px 16px;margin-bottom:12px;border-left:4px solid #003087;}'
+    +'.info-row label{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:#888;font-weight:700;display:block;margin-bottom:2px;}'
+    +'.info-row span{font-size:13px;font-weight:700;color:#003087;}'
+    +'.pbar{height:8px;background:#dde3ec;border-radius:99px;overflow:hidden;margin-bottom:4px;}'
+    +'.pfill{height:100%;background:linear-gradient(90deg,#003087,#1a56c4);border-radius:99px;width:'+pct+'%;}'
+    +'.plbl{font-size:10px;color:#888;margin-bottom:14px;}'
+    +'.ph{font-size:12px;font-weight:900;text-transform:uppercase;color:#fff;background:#003087;padding:7px 12px;margin:14px 0 4px;border-radius:6px;}'
+    +'.cat{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#003087;padding:8px 0 3px;border-bottom:1px solid #F5C518;margin-bottom:3px;}'
+    +'.row{display:flex;align-items:flex-start;padding:5px 4px;border-bottom:1px solid #eee;gap:10px;}.row:last-child{border-bottom:none;}'
+    +'.chk{width:16px;height:16px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;}'
+    +'.chk.ok{background:#1DB86B;border-color:#1DB86B;color:#fff;}'
+    +'.lbl{flex:1;font-size:11px;color:#111;line-height:1.4;}.lbl.done{color:#5a7a6a;text-decoration:line-through;}'
+    +'.cmt{margin:3px 0 4px 26px;background:#fffbea;border-left:3px solid #F5C518;padding:5px 8px;font-size:10px;color:#555;border-radius:0 4px 4px 0;font-style:italic;}'
+    +'.sig-sec{margin-top:24px;padding-top:14px;border-top:3px solid #003087;display:flex;justify-content:space-between;align-items:flex-end;}'
+    +'.sig-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:#888;font-weight:700;margin-bottom:4px;}'
+    +'.sig-name{font-size:16px;font-style:italic;font-weight:700;color:#003087;border-bottom:1px solid #ccc;padding-bottom:4px;min-width:180px;}'
+    +'.sig-date{font-size:10px;color:#555;margin-top:4px;}.re-brand{text-align:right;font-size:10px;color:#888;font-weight:700;letter-spacing:1px;}'
+    +'@page{margin:15mm;size:A4;}</style></head><body>';
+  html+='<h1>Rugby Europe — Match Commissioner Report</h1><div class="sub">'+userName+' · '+matchCode+' · '+date+'</div>';
+  html+='<div class="info-grid">'
+    +'<div class="info-row"><label>Commissioner</label><span>'+esc(state['__name']||userName||'—')+'</span></div>'
+    +'<div class="info-row"><label>Union</label><span>'+esc(state['__union']||'—')+'</span></div>'
+    +'<div class="info-row"><label>Match / Division</label><span>'+esc(state['__match']||matchCode||'—')+'</span></div>'
+    +'<div class="info-row"><label>Venue / Stadium</label><span>'+esc(state['__venue']||'—')+'</span></div>'
+    +'</div>';
+  html+='<div class="pbar"><div class="pfill"></div></div><div class="plbl">'+done+' / '+all.length+' items validated ('+pct+'%)</div>';
+  phases.forEach(function(p){
+    if(p.subsections){
+      html+='<div class="ph">'+p.label+' — '+p.desc+'</div>';
+      p.subsections.forEach(function(sub){
+        var d=sub.items.filter(function(i){ return state[i.id]&&state[i.id].c; }).length;
+        html+='<div class="cat">'+sub.desc+' ('+d+'/'+sub.items.length+')</div>';
+        sub.items.forEach(function(item){
+          var s=state[item.id]||{c:false,n:''};
+          html+='<div class="row"><div class="chk'+(s.c?' ok':'')+'>'+(s.c?'✓':'')+'</div><div class="lbl'+(s.c?' done':'')+'">'+item.text+'</div></div>';
+          if(s.n)html+='<div class="cmt">📝 '+esc(s.n)+'</div>';
         });
       });
     } else {
-      var it = phaseItems(p), d = it.filter(function(i){ return state[i.id] && state[i.id].c; }).length;
-      html += '<div class="ph-title">'+p.label+' — '+p.desc+' ('+d+'/'+it.length+')</div>';
-      p.items.forEach(function(item) {
-        if (item.cat) { html += '<div class="cat-t">'+item.text+'</div>'; return; }
-        var s = state[item.id] || {c:false, n:''};
-        html += '<div class="row"><div class="chk'+(s.c?' ok':'')+'>'+(s.c?'&#10003;':'')+'</div>'
-          + '<div class="lbl'+(s.c?' done':'')+'">'+item.text+'</div></div>';
-        if (s.n) html += '<div class="cmt">&#128204; '+esc(s.n)+'</div>';
+      var it=phaseItems(p), d=it.filter(function(i){ return state[i.id]&&state[i.id].c; }).length;
+      html+='<div class="ph">'+p.label+' — '+p.desc+' ('+d+'/'+it.length+')</div>';
+      p.items.forEach(function(item){
+        if(item.cat){html+='<div class="cat">'+item.text+'</div>';return;}
+        var s=state[item.id]||{c:false,n:''};
+        html+='<div class="row"><div class="chk'+(s.c?' ok':'')+'>'+(s.c?'✓':'')+'</div><div class="lbl'+(s.c?' done':'')+'">'+item.text+'</div></div>';
+        if(s.n)html+='<div class="cmt">📝 '+esc(s.n)+'</div>';
       });
     }
   });
-
-  html += '<div class="sig-sec">'
-    + '<div><div class="sig-lbl">Match Commissioner Signature</div>'
-    + '<div class="sig-name">'+esc(state['__sig']||'—')+'</div>'
-    + '<div class="sig-date">Date: '+date+'</div></div>'
-    + '<div class="re-brand">RUGBY EUROPE<br>Match Commissioner</div>'
-    + '</div></body></html>';
-
-  var w = window.open('','_blank');
-  if (!w) { showToast('Allow popups to export'); return; }
+  html+='<div class="sig-sec"><div><div class="sig-lbl">Match Commissioner Signature</div>'
+    +'<div class="sig-name">'+esc(state['__sig']||userName||'—')+'</div>'
+    +'<div class="sig-date">Date: '+date+'</div></div>'
+    +'<div class="re-brand">RUGBY EUROPE<br>Match Commissioner</div></div></body></html>';
+  var w=window.open('','_blank');
+  if(!w){showToast('Allow popups to export');return;}
   w.document.write(html); w.document.close(); w.focus();
-  setTimeout(function(){ w.print(); }, 500);
+  setTimeout(function(){ w.print(); },500);
 }
 
-// ── MODAL / RESET ─────────────────────────────────────────────────────────
-document.getElementById('resetBtn').addEventListener('click', function(){ document.getElementById('modal').classList.add('open'); });
-document.getElementById('cancelModal').addEventListener('click', function(){ document.getElementById('modal').classList.remove('open'); });
-document.getElementById('confirmReset').addEventListener('click', function(){ state={}; save(); document.getElementById('modal').classList.remove('open'); render(); showToast('Check-list reset'); });
-document.getElementById('modal').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('open'); });
+document.getElementById('resetBtn').addEventListener('click',function(){ document.getElementById('modal').classList.add('open'); });
+document.getElementById('cancelModal').addEventListener('click',function(){ document.getElementById('modal').classList.remove('open'); });
+document.getElementById('confirmReset').addEventListener('click',async function(){
+  state={};
+  await saveToFirebase();
+  document.getElementById('modal').classList.remove('open');
+  render(); showToast('Check-list reset');
+});
+document.getElementById('modal').addEventListener('click',function(e){ if(e.target===this)this.classList.remove('open'); });
 
-load(); render();
 </script>
 </body>
 </html>
