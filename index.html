@@ -137,7 +137,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
 .sig-body input:focus{border-color:var(--navy);}
 
 /* NAV */
-.bot-nav{position:fixed;bottom:0;left:0;right:0;height:calc(var(--nav-h) + var(--sab));padding-bottom:var(--sab);background:#fff;border-top:2px solid var(--gold);display:flex;z-index:200;box-shadow:0 -4px 20px rgba(0,48,135,.10);}
+.bot-nav{position:fixed;bottom:0;left:0;right:0;height:calc(var(--nav-h) + var(--sab));padding-bottom:var(--sab);background:#fff;border-top:2px solid var(--gold);display:flex;z-index:100;box-shadow:0 -4px 20px rgba(0,48,135,.10);}
 .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;border:none;background:none;min-height:var(--nav-h);font-family:inherit;}
 .nav-btn.on .nav-ic{color:var(--navy);}
 .nav-btn.on .nav-lbl{color:var(--navy);font-weight:800;}
@@ -206,7 +206,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
   </div>
   <div class="tabs" id="tabs"></div>
   <div class="scroll" id="scroll"></div>
-  <nav class="bot-nav">
+</div>
+
+<nav class="bot-nav" id="bot-nav" style="display:none;">
     <button class="nav-btn on" id="nb-overview" data-nav="overview">
       <span class="nav-ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="12" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="2" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="12" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/></svg></span>
       <span class="nav-lbl">Overview</span>
@@ -222,8 +224,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
       <span class="nav-ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M11 10v5M11 7.5v.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
       <span class="nav-lbl">Match Info</span>
     </button>
-  </nav>
-</div>
+</nav>
 
 <div class="overlay" id="modal">
   <div class="sheet">
@@ -475,6 +476,7 @@ async function doLogin() {
   document.getElementById('login-screen').style.display = 'none';
   var appEl = document.getElementById('app');
   appEl.style.display = 'flex';
+  document.getElementById('bot-nav').style.display = 'flex';
   render();
   document.getElementById('login-btn').textContent = 'Start / Resume Session';
   document.getElementById('login-btn').disabled = false;
@@ -483,6 +485,7 @@ async function doLogin() {
 // ── LOGOUT ────────────────────────────────────────────────────────────────
 document.getElementById('logoutBtn').addEventListener('click', function(){
   document.getElementById('app').style.display = 'none';
+  document.getElementById('bot-nav').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
   state = {}; sessionKey = ''; curNav='overview'; curPhase='j7';
 });
@@ -731,7 +734,7 @@ function exportPDF(){
 }
 
 // ── NAV buttons — attached ONCE here, never in render ────────────────────
-document.querySelector('.bot-nav').addEventListener('click', function(e) {
+document.getElementById('bot-nav').addEventListener('click', function(e) {
   var btn = e.target.closest('[data-nav]');
   if (btn) goNav(btn.getAttribute('data-nav'));
 });
